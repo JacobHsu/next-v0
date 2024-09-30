@@ -8,6 +8,16 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 npx shadcn@latest init
 ```
 
+## v0.dev
+
+[apple-calculator](https://v0.dev/chat/bYkde7952kh)
+
+Add to Codebase
+
+```bash
+npx shadcn@latest add "https://v0.dev/chat/b/b_GhDob08kZEu"
+```
+
 ## Getting Started
 
 First, run the development server:
