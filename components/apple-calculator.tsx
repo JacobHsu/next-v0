@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 
 export function AppleCalculatorComponent() {
   const [display, setDisplay] = useState('0')
-  const [firstOperand, setFirstOperand] = useState(null)
-  const [operator, setOperator] = useState(null)
-  const [waitingForSecondOperand, setWaitingForSecondOperand] = useState(false)
+  const [firstOperand, setFirstOperand] = useState<string | null>(null)
+  const [operator, setOperator] = useState<string | null>(null)
+  const [waitingForSecondOperand, setWaitingForSecondOperand] = useState<boolean>(false)
 
-  const inputDigit = (digit) => {
+  const inputDigit = (digit: number) => {
     if (waitingForSecondOperand) {
       setDisplay(String(digit))
       setWaitingForSecondOperand(false)
@@ -31,22 +31,22 @@ export function AppleCalculatorComponent() {
     setWaitingForSecondOperand(false)
   }
 
-  const performOperation = (nextOperator) => {
+  const performOperation = (nextOperator: string) => {
     const inputValue = parseFloat(display)
 
     if (firstOperand === null) {
-      setFirstOperand(inputValue)
+      setFirstOperand(inputValue.toString())
     } else if (operator) {
-      const result = calculate(firstOperand, inputValue, operator)
+      const result = calculate(parseFloat(firstOperand), inputValue, operator)
       setDisplay(String(result))
-      setFirstOperand(result)
+      setFirstOperand(result.toString())
     }
 
     setWaitingForSecondOperand(true)
     setOperator(nextOperator)
   }
 
-  const calculate = (firstOperand, secondOperand, operator) => {
+  const calculate = (firstOperand: number, secondOperand: number, operator: string): number => {
     switch (operator) {
       case '+':
         return firstOperand + secondOperand
